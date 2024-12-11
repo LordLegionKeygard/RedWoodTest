@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5def37206f6629a4e91af9b238e82246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 8640291696989639183}
+  _spriteRenderer: {fileID: 8640291696989639216}
 --- !u!114 &226418925780629220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 0
   _healthSliderPrefab: {fileID: 404669213447232347, guid: 15137df613767154b93ea792152d58aa, type: 3}
-  _sliderHeightOffset: 2.5
+  _sliderHeightOffset: 1
 --- !u!114 &2334822278482016372
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,12 +4,11 @@ using Zenject;
 public class EnemyMovement : MonoBehaviour
 {
     [Inject] PlayerHealth _playerHealth;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     private float _speed;
-    private bool _isFacingRight = true;
     private EnemyInformation _enemyInformation;
     private Rigidbody2D _rigidBody;
     private Vector2 _nextPoint;
-    public Transform Model;
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -37,23 +36,12 @@ public class EnemyMovement : MonoBehaviour
     {
         float distance = DistanceToPlayer();
 
-        if (distance < 0)
-            _nextPoint.x *= -1;
+        if (distance < 0) _nextPoint.x *= -1;
 
-        if (distance > 0.2f && !_isFacingRight)
-            Flip();
-
-        else if (distance < 0.2f && _isFacingRight)
-            Flip();
+        _spriteRenderer.flipX = distance < 0.2f;
 
         _rigidBody.MovePosition((Vector2)transform.position + _nextPoint);
     }
 
-    public virtual float DistanceToPlayer() { return _playerHealth.transform.position.x - transform.position.x; }
-
-    public virtual void Flip()
-    {
-        _isFacingRight = !_isFacingRight;
-        Model.Rotate(0f, 180f, 0f);
-    }
+    private float DistanceToPlayer() { return _playerHealth.transform.position.x - transform.position.x; }
 }
