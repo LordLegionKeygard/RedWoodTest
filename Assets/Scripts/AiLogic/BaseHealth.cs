@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class BaseHealth : MonoBehaviour
 {
     protected int _currentHealth;

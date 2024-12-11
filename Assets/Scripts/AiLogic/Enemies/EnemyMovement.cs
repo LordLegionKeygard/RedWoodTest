@@ -4,14 +4,26 @@ using Zenject;
 public class EnemyMovement : MonoBehaviour
 {
     [Inject] PlayerHealth _playerHealth;
-    [SerializeField] private float _speed;
-    [SerializeField] private bool _isFacingRight = true;
+    private float _speed;
+    private bool _isFacingRight = true;
+    private EnemyInformation _enemyInformation;
     private Rigidbody2D _rigidBody;
     private Vector2 _nextPoint;
     public Transform Model;
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
+        _enemyInformation = GetComponent<EnemyInformation>();
+    }
+
+    private void Start()
+    {
+        SetupSpeed();
+    }
+
+    private void SetupSpeed()
+    {
+        _speed = _enemyInformation.GetEnemyInfo().Speed;
     }
 
     private void FixedUpdate()

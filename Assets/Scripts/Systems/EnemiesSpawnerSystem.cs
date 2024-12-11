@@ -41,7 +41,9 @@ public class EnemiesSpawnerSystem : MonoBehaviour
             var enemy = _enemyFactory.SpawnEnemy(_enemiesPrefab[rndEnemy], GetRandomPosition(), _enemiesParent);
             enemy.transform.SetParent(_enemiesParent);
 
-            enemy.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y, -3.1f);
+            var rndPosZ = Random.Range(-3.1f, -3.9f);
+
+            enemy.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y, rndPosZ);
         }
     }
 

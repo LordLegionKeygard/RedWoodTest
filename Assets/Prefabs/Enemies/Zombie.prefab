@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8640291696989639183}
   - component: {fileID: 8640291696989639217}
   - component: {fileID: 8640291696989639216}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 226418925780629220}
   - component: {fileID: 3460349007107323883}
   - component: {fileID: 2334822278482016372}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!114 &8640291697591699068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,8 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5def37206f6629a4e91af9b238e82246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
-  _isFacingRight: 1
   Model: {fileID: 8640291696989639183}
 --- !u!114 &226418925780629220
 MonoBehaviour:

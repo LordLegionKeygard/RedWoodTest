@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173e218ca3d224f4aa38ea08af048385, type: 3}
   m_Name: Zombie
   m_EditorClassIdentifier: 
-  Damage: 0
-  MaxHealth: 0
+  Damage: 1
+  MaxHealth: 1
+  Speed: 1
