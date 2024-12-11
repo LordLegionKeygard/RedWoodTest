@@ -8,6 +8,6 @@ public class EnemyFactoryInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<EnemyFactory>().AsSingle();
-        Container.Inject(_enemiesSpawnerSystem);
+        Container.Bind<EnemiesSpawnerSystem>().FromInstance(_enemiesSpawnerSystem).AsSingle();
     }
 }
