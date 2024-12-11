@@ -119,6 +119,8 @@ GameObject:
   - component: {fileID: 8640291697591699069}
   - component: {fileID: 8640291697591699068}
   - component: {fileID: 226418925780629220}
+  - component: {fileID: 3460349007107323883}
+  - component: {fileID: 2334822278482016372}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -206,3 +208,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836a44792a50805498324c520c30469c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3460349007107323883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8640291697591699064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e45207ebe8b6fe4897e2bd1d95d1371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 0
+  _healthSliderPrefab: {fileID: 404669213447232347, guid: 15137df613767154b93ea792152d58aa, type: 3}
+  _sliderHeightOffset: 2.5
+--- !u!114 &2334822278482016372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8640291697591699064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b34e20b48ad4b647be3c7bc84921a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyInfo: {fileID: 11400000, guid: 266cae0b82f923f419c56ce6a13549d6, type: 2}

@@ -207,6 +207,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &79658962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 79658963}
+  - component: {fileID: 79658964}
+  m_Layer: 0
+  m_Name: EnemyFactoryInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &79658963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79658962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 787558328}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &79658964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79658962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51226acef387ef94398121b1cbce72a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemiesSpawnerSystem: {fileID: 1804844573}
 --- !u!1 &118329039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,6 +1334,7 @@ Transform:
   m_Children:
   - {fileID: 800705827}
   - {fileID: 1686599410}
+  - {fileID: 79658963}
   m_Father: {fileID: 1046833184}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1308,6 +1354,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 800705828}
   - {fileID: 1686599411}
+  - {fileID: 79658964}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -2120,8 +2167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dba0bdae0b84e49b4d7ebab775a78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 0
-  _maxHealth: 0
+  MaxHealth: 1
 --- !u!1 &1516923891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,7 +2296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecf128e251c9d54fbd382d058a17763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthCanvas: {fileID: 1768587567}
+  _healthCanvas: {fileID: 1768587571}
 --- !u!1 &1733844026
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,6 +2510,7 @@ GameObject:
   - component: {fileID: 1768587570}
   - component: {fileID: 1768587569}
   - component: {fileID: 1768587568}
+  - component: {fileID: 1768587571}
   m_Layer: 5
   m_Name: HealthCanvas
   m_TagString: Untagged
@@ -2552,6 +2599,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1768587571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768587566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6525e016529f84d9a9e5b6af56a933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1797127069
 GameObject:
   m_ObjectHideFlags: 0

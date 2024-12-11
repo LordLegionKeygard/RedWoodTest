@@ -1,35 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class BaseHealth : MonoBehaviour
 {
-    [SerializeField] private int _currentHealth;
-    [SerializeField] private int _maxHealth;
-
+    protected int _currentHealth;
+    public int MaxHealth;
+    protected bool _isDeath;
+    
     private void Start()
     {
-        SetupHealth();
+        SetStartStats();
     }
 
-    private void SetupHealth()
+    
+    public virtual void SetStartStats()
     {
-
+        _isDeath = false;
+        _currentHealth = MaxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         _currentHealth -= damage;
-        CheckDeath();
     }
 
-    private void CheckDeath()
+    public void CheckDeath()
     {
         if (_currentHealth <= 0) Death();
     }
 
     private void Death()
     {
+        _isDeath = true;
         Destroy(gameObject);
     }
 }

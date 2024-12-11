@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 public class EnemiesSpawnerSystem : MonoBehaviour
 {
-    [Inject] DiContainer _diContainer;
+    [Inject] EnemyFactory _enemyFactory;
     [SerializeField] private GameObject[] _enemiesPrefab;
     [SerializeField] private Transform _enemiesParent;
 
@@ -38,8 +37,10 @@ public class EnemiesSpawnerSystem : MonoBehaviour
         for (int i = 0; i < enemiesCount; i++)
         {
             var rndEnemy = Random.Range(0, _enemiesPrefab.Length);
-            var enemy = _diContainer.InstantiatePrefab(_enemiesPrefab[rndEnemy], GetRandomPosition(), Quaternion.identity, null);
+
+            var enemy = _enemyFactory.SpawnEnemy(_enemiesPrefab[rndEnemy], GetRandomPosition(), _enemiesParent);
             enemy.transform.SetParent(_enemiesParent);
+
             enemy.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y, -3.1f);
         }
     }
