@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Transform _playerSpriteTransform;
     [SerializeField] private Animator _animator;
     private PlayerMovement _playerMovement;
+    private bool _isFacingRight = true;
 
     private void Awake()
     {
@@ -24,13 +25,13 @@ public class PlayerAnimator : MonoBehaviour
 
     public void SetDirection(Vector2 direction)
     {
-        if (direction.x < 0)
-        {
-            _spriteRenderer.flipX = true;
-        }
-        else if (direction.x > 0)
-        {
-            _spriteRenderer.flipX = false;
-        }
+        if (direction.x > 0 && !_isFacingRight) Flip();
+        else if (direction.x < 0 && _isFacingRight) Flip();
+    }
+
+    private void Flip()
+    {
+        _isFacingRight = !_isFacingRight;
+        _playerSpriteTransform.Rotate(0f, 180f, 0f);
     }
 }

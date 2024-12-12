@@ -24,7 +24,6 @@ public class AttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enter - MoveState");
         _playerAnimator.SetBoolAnimation(AnimatorStrings.Attack, true);
         _isShooting = true;
         _nextFireTime = 0;
@@ -34,15 +33,12 @@ public class AttackState : PlayerState
     {
         base.HandleInput();
 
+        _playerAnimator.SetDirection(_playerMovement.CurrentDirection);
+
         if (Input.GetMouseButtonUp(0))
         {
             _isShooting = false;
             _stateChanger.ChangeState(_stateChanger.IdleState);
-        }
-
-        if (_playerMovement.CurrentDirection != Vector2.zero)
-        {
-            // _stateChanger.ChangeState(_stateChanger.MoveAttackState);
         }
     }
 

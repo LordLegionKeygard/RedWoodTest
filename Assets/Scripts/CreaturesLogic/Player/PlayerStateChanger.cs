@@ -14,7 +14,6 @@ public class PlayerStateChanger : MonoBehaviour
     public PlayerState IdleState { get; private set; }
     public PlayerState MoveState { get; private set; }
     public PlayerState AttackState { get; private set; }
-    // public PlayerState MoveAttackState { get; private set; }
 
     private void Awake()
     {
@@ -25,8 +24,7 @@ public class PlayerStateChanger : MonoBehaviour
 
         IdleState = new IdleState(this, _playerMovement, _playerAnimator);
         MoveState = new MoveState(this, _playerMovement, _playerAnimator);
-        AttackState = new AttackState(this, _playerMovement, _playerAnimator, _firePoint, _fireRate, _bulletFactory);
-        // MoveAttackState = new MoveAttackState(this, _playerMovement, _playerAnimator, _firePoint, _bulletPrefab, _fireRate, _bulletFactory);
+        AttackState = new AttackState(this, _playerMovement, _playerAnimator, _firePoint, _fireRate, _bulletFactory);;
     }
 
     private void Start()

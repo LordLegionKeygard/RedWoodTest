@@ -9,7 +9,6 @@ public class IdleState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enter - IdleState");
         _playerAnimator.SetBoolAnimation(AnimatorStrings.Attack, false);
     }
 

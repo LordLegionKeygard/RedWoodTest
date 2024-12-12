@@ -9,7 +9,6 @@ public class MoveState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enter - MoveState");
         _playerAnimator.SetBoolAnimation(AnimatorStrings.Attack, false);
     }
 
