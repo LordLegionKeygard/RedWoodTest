@@ -14,6 +14,19 @@ public class BaseSlider : MonoBehaviour
         _mainCamera = Camera.main;
     }
 
+    private void LateUpdate()
+    {
+        InitializePosition();
+    }
+
+    public void InitializePosition()
+    {
+        if (_objectTransform == null) return;
+
+        Vector3 screenPosition = _mainCamera.WorldToScreenPoint(_objectTransform.position + Vector3.up * _heightOffset);
+        _sliderTransform.position = screenPosition;
+    }
+
     public void SetValue(float value)
     {
         _slider.value = value;
@@ -32,12 +45,4 @@ public class BaseSlider : MonoBehaviour
     }
 
     public void SetObjectTransform(Transform transform) => _objectTransform = transform;
-
-    private void LateUpdate()
-    {
-        if(_objectTransform == null) return;
-
-        Vector3 screenPosition = _mainCamera.WorldToScreenPoint(_objectTransform.position + Vector3.up * _heightOffset);
-        _sliderTransform.position = screenPosition;
-    }
 }

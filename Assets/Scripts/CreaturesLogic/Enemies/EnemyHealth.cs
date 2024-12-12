@@ -32,7 +32,6 @@ public class EnemyHealth : BaseHealth
         _healthSlider.SetObjectTransform(transform);
         _healthSlider.SetupHealth(MaxHealth);
         _healthSlider.SetHeightOffset(_sliderHeightOffset);
-        _healthSliderObject.SetActive(true);
     }
 
     public override void TakeDamage(int damage)
