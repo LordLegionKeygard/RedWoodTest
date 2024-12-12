@@ -3,8 +3,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private int _damage = 1;
-    private float _speed = 25f;
-    private float _lifetime = 2f;
+    private float _speed = 25;
+    private float _lifetime = 2;
     private float _timer;
     private Rigidbody2D _rigidBody;
     private BulletPool _pool;

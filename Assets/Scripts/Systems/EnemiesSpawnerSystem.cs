@@ -7,11 +7,14 @@ public class EnemiesSpawnerSystem : MonoBehaviour
     [Inject] EnemyFactory _enemyFactory;
     [SerializeField] private GameObject[] _enemiesPrefab;
     [SerializeField] private Transform _enemiesParent;
-    private int _enemiesSpawnCount;
+    [SerializeField] private int _enemiesSpawnCount;
+    private Coroutine _coroutine;
 
     private void Start()
     {
-        StartCoroutine(nameof(SpawnCoroutine));
+        _coroutine = StartCoroutine(nameof(SpawnCoroutine));
+
+        CustomEvents.OnGameEnd += GameEndStopCoroutine;
     }
 
     private IEnumerator SpawnCoroutine()
@@ -33,11 +36,11 @@ public class EnemiesSpawnerSystem : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        var enemiesCount = Random.Range(1, WorldGameInfo.MaxEnemiesSpawnCount);
+        var enemiesCount = Random.Range(WorldGameInfo.MinEnemiesSpawnCount, WorldGameInfo.MaxEnemiesSpawnCount);
 
         for (int i = 0; i < enemiesCount; i++)
         {
-            if (_enemiesSpawnCount >= WorldGameInfo.MaxEnemiesSpawnCount) return;
+            if (_enemiesSpawnCount >= WorldGameInfo.MaxGameEnemiesCount) return;
 
             var rndEnemy = Random.Range(0, _enemiesPrefab.Length);
 
@@ -54,7 +57,17 @@ public class EnemiesSpawnerSystem : MonoBehaviour
 
     private Vector2 GetRandomPosition()
     {
-        var rndX = Random.Range(0, 2) == 0 ? Random.Range(-30, -80) : Random.Range(30, 80);
-        return new Vector2(rndX, -12.62f);
+        var rndPosX = Random.Range(0, 2) == 0 ? Random.Range(-20, -50) : Random.Range(20, 50);
+        return new Vector2(rndPosX, -12.62f);
+    }
+
+    private void GameEndStopCoroutine(GameEndEnum _)
+    {
+        StopCoroutine(_coroutine);
+    }
+
+    private void OnDestroy()
+    {
+        CustomEvents.OnGameEnd -= GameEndStopCoroutine;
     }
 }
