@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +13,7 @@ public class GameEndSystem : MonoBehaviour
 
     private void GameEnd(GameEndEnum endEnum)
     {
+        CustomEvents.FireClearScene();
         _gameEndPanel.SetActive(true);
         switch (endEnum)
         {

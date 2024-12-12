@@ -8,6 +8,7 @@ public class BaseHealth : MonoBehaviour
 
     private void Start()
     {
+        CustomEvents.OnClearScene += Clear;
         SetStartStats();
     }
 
@@ -24,12 +25,22 @@ public class BaseHealth : MonoBehaviour
 
     public void CheckDeath()
     {
-        if (_currentHealth <= 0) Death();
+        if (_currentHealth <= 0) Death(false);
     }
 
-    public virtual void Death()
+    private void Clear()
+    {
+        Death(true);
+    }
+
+    public virtual void Death(bool endGame)
     {
         _isDeath = true;
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        CustomEvents.OnClearScene -= Clear; 
     }
 }

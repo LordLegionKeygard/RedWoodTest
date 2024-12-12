@@ -28,7 +28,6 @@ public class AttackState : PlayerState
         base.Enter();
         _playerAnimator.SetBoolAnimation(AnimatorStrings.Attack, true);
         _isShooting = true;
-        _nextFireTime = 0;
     }
 
     public override void HandleInput()
@@ -60,6 +59,7 @@ public class AttackState : PlayerState
         CustomEvents.FireChangeBullets(-1);
         _bulletFactory.CreateBullet(_firePoint);
         _playerAnimator.SetBoolAnimation(AnimatorStrings.Attack, true);
+        AudioManager.Instance.PlayerOneShot(FMODEvents.Instance.Shoot, _stateChanger.transform.position);
     }
 
     public override void Exit()

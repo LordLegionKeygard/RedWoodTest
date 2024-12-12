@@ -9,16 +9,17 @@ public class ItemPickup : MonoBehaviour
         switch (_item.ItemType)
         {
             case ItemType.Ammo:
+                AudioManager.Instance.PlayerOneShot(FMODEvents.Instance.TakeAmmo, transform.position);
                 AddRandomAmmo();
                 break;
         }
-        
+
         Destroy(transform.parent.gameObject);
     }
 
     private void AddRandomAmmo()
     {
-        var rnd = Random.Range(1, 10);
+        var rnd = Random.Range(10, 25);
         CustomEvents.FireChangeBullets(rnd);
     }
 }

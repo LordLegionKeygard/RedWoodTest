@@ -19,4 +19,10 @@ public class CustomEvents
     {
         OnEnemyDie?.Invoke();
     }
+
+    public static event Action OnClearScene;
+    public static void FireClearScene()
+    {
+        OnClearScene?.Invoke();
+    }
 }

@@ -5,7 +5,7 @@ public class PlayerStateChanger : MonoBehaviour
 {
     [Inject] PlayerAmmoSystem _playerAmmoSystem;
     [SerializeField] private Transform _firePoint;
-    [SerializeField] private float _fireRate = 0.1f;
+    [SerializeField] private float _fireRate;
     [SerializeField] private BulletPool _bulletPool;
 
     private PlayerMovement _playerMovement;

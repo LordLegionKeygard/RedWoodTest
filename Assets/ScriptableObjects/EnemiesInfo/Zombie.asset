@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Zombie
   m_EditorClassIdentifier: 
   Damage: 1
-  MaxHealth: 2
+  MaxHealth: 10
   Speed: 1

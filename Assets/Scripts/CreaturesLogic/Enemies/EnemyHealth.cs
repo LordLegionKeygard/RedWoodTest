@@ -29,15 +29,27 @@ public class EnemyHealth : BaseHealth
     {
         _healthSliderObject = Instantiate(_healthSliderPrefab, _healthCanvas.transform);
         _healthSlider = _healthSliderObject.GetComponent<BaseSlider>();
+        _healthSlider.SetObjectTransform(transform);
         _healthSlider.SetupHealth(MaxHealth);
         _healthSlider.SetHeightOffset(_sliderHeightOffset);
-        _healthSlider.SetObjectTransform(transform);
+        _healthSliderObject.SetActive(true);
     }
 
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
         UpdateSlider();
+        PlayTakeDamageSound();
+    }
+
+    private void PlayTakeDamageSound()
+    {
+        var rnd = Random.Range(0, 10);
+
+        if (rnd < 1)
+        {
+            AudioManager.Instance.PlayerOneShot(FMODEvents.Instance.ZombieGrowl, transform.position);
+        }
     }
 
     private void UpdateSlider()
@@ -47,11 +59,15 @@ public class EnemyHealth : BaseHealth
         CheckDeath();
     }
 
-    public override void Death()
+    public override void Death(bool endGame)
     {
         Destroy(_healthSliderObject);
-        _enemyDrop.DropItem();
-        CustomEvents.FireEnemyDie();
-        base.Death();
+
+        if (!endGame)
+        {
+            _enemyDrop.DropItem();
+            CustomEvents.FireEnemyDie();
+        }
+        base.Death(endGame);
     }
 }

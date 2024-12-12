@@ -6,9 +6,14 @@ public class PlayerHealth : BaseHealth
         CheckDeath();
     }
 
-    public override void Death()
+    public override void Death(bool endGame)
     {
-        CustomEvents.FireGameEnd(GameEndEnum.LoseGameTakeDamage);
-        base.Death();
+        if (!endGame)
+        {
+            CustomEvents.FireGameEnd(GameEndEnum.LoseGameTakeDamage);
+            AudioManager.Instance.PlayerOneShot(FMODEvents.Instance.PlayerDeath, transform.position);
+        }
+
+        base.Death(endGame);
     }
 }
