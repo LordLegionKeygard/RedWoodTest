@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class MoveState : PlayerState
 {
-    public MoveState(PlayerStateChanger stateChanger, PlayerMovement movement, PlayerAnimator animator) : base(stateChanger, movement, animator)
-    {
-    }
+    public MoveState(PlayerStateChanger stateChanger,
+                    PlayerMovement movement,
+                    PlayerAnimator animator,
+                    PlayerAmmoSystem playerAmmoSystem)
+                    : base(stateChanger, movement, animator, playerAmmoSystem) { }
 
     public override void Enter()
     {
@@ -22,7 +24,7 @@ public class MoveState : PlayerState
         {
             _stateChanger.ChangeState(_stateChanger.IdleState);
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && _playerAmmoSystem.HaveBullet())
         {
             _stateChanger.ChangeState(_stateChanger.AttackState);
         }

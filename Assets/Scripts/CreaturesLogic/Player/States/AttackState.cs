@@ -13,12 +13,14 @@ public class AttackState : PlayerState
                         PlayerAnimator animator,
                         Transform firePoint,
                         float fireRate,
-                        IBulletFactory bulletFactory)
-                        : base(stateChanger, movement, animator)
+                        IBulletFactory bulletFactory,
+                        PlayerAmmoSystem playerAmmoSystem)
+                        : base(stateChanger, movement, animator, playerAmmoSystem)
     {
         _firePoint = firePoint;
         _fireRate = fireRate;
         _bulletFactory = bulletFactory;
+        _playerAmmoSystem = playerAmmoSystem;
     }
 
     public override void Enter()
@@ -35,7 +37,7 @@ public class AttackState : PlayerState
 
         _playerAnimator.SetDirection(_playerMovement.CurrentDirection);
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) || !_playerAmmoSystem.HaveBullet())
         {
             _isShooting = false;
             _stateChanger.ChangeState(_stateChanger.IdleState);
@@ -55,6 +57,7 @@ public class AttackState : PlayerState
 
     private void Shoot()
     {
+        CustomEvents.FireChangeBullets(-1);
         _bulletFactory.CreateBullet(_firePoint);
         _playerAnimator.SetBoolAnimation(AnimatorStrings.Attack, true);
     }

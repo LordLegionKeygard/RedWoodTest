@@ -1,7 +1,9 @@
 using UnityEngine;
+using Zenject;
 
 public class PlayerStateChanger : MonoBehaviour
 {
+    [Inject] PlayerAmmoSystem _playerAmmoSystem;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private float _fireRate = 0.1f;
     [SerializeField] private BulletPool _bulletPool;
@@ -22,9 +24,9 @@ public class PlayerStateChanger : MonoBehaviour
 
         _bulletFactory = new BulletFactory(_bulletPool);
 
-        IdleState = new IdleState(this, _playerMovement, _playerAnimator);
-        MoveState = new MoveState(this, _playerMovement, _playerAnimator);
-        AttackState = new AttackState(this, _playerMovement, _playerAnimator, _firePoint, _fireRate, _bulletFactory);;
+        IdleState = new IdleState(this, _playerMovement, _playerAnimator, _playerAmmoSystem);
+        MoveState = new MoveState(this, _playerMovement, _playerAnimator, _playerAmmoSystem);
+        AttackState = new AttackState(this, _playerMovement, _playerAnimator, _firePoint, _fireRate, _bulletFactory, _playerAmmoSystem);
     }
 
     private void Start()

@@ -20,11 +20,11 @@ public class EnemyDamage : MonoBehaviour
         _damage = _enemyInformation.GetEnemyInfo().Damage;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.TryGetComponent<PlayerHealth>(out PlayerHealth playerHealth))
         {
-            playerHealth.TakeDamage(_damage);    
+            playerHealth.TakeDamage(_damage);
         }
     }
 }

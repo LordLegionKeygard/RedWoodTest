@@ -34,6 +34,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void ChasePlayer()
     {
+        if (_playerHealth == null) return;
+
         float distance = DistanceToPlayer();
 
         if (distance < 0) _nextPoint.x *= -1;
