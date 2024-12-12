@@ -27,6 +27,11 @@ public class BaseSlider : MonoBehaviour
         _sliderTransform.position = screenPosition;
     }
 
+    public void ActiveSlider()
+    {
+        _slider.gameObject.SetActive(true);
+    }
+
     public void SetValue(float value)
     {
         _slider.value = value;

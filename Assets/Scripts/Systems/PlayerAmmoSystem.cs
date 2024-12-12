@@ -6,7 +6,7 @@ public class PlayerAmmoSystem : MonoBehaviour
     [SerializeField] private int _startBulletsAmount;
     [SerializeField] private int _currentBulletsAmount;
     [SerializeField] private TextMeshProUGUI _bulletsText;
-    private int _warningBulletsCount = 3;
+    private int _warningBulletsCount = 10;
     public bool HaveBullet() => _currentBulletsAmount > 0;
 
     private void Start()

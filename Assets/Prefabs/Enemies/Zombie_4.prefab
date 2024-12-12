@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 0
-  _healthSliderPrefab: {fileID: 404669213447232347, guid: 15137df613767154b93ea792152d58aa, type: 3}
+  _healthSliderPrefab: {fileID: 2232761339065133315, guid: 15137df613767154b93ea792152d58aa, type: 3}
   _sliderHeightOffset: 2
 --- !u!114 &2334822278482016372
 MonoBehaviour:
