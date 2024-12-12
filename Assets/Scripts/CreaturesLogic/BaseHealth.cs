@@ -11,7 +11,6 @@ public class BaseHealth : MonoBehaviour
         SetStartStats();
     }
 
-
     public virtual void SetStartStats()
     {
         _isDeath = false;

@@ -7,6 +7,7 @@ public class EnemiesSpawnerSystem : MonoBehaviour
     [Inject] EnemyFactory _enemyFactory;
     [SerializeField] private GameObject[] _enemiesPrefab;
     [SerializeField] private Transform _enemiesParent;
+    private int _enemiesSpawnCount;
 
     private void Start()
     {
@@ -15,7 +16,7 @@ public class EnemiesSpawnerSystem : MonoBehaviour
 
     private IEnumerator SpawnCoroutine()
     {
-        while (true)
+        while (_enemiesSpawnCount <= WorldGameInfo.MaxGameEnemiesCount)
         {
             float time = 0;
             var rnd = Random.Range(WorldGameInfo.MinSpawnTime, WorldGameInfo.MaxSpawnTime);
@@ -36,6 +37,8 @@ public class EnemiesSpawnerSystem : MonoBehaviour
 
         for (int i = 0; i < enemiesCount; i++)
         {
+            if (_enemiesSpawnCount >= WorldGameInfo.MaxEnemiesSpawnCount) return;
+
             var rndEnemy = Random.Range(0, _enemiesPrefab.Length);
 
             var enemy = _enemyFactory.SpawnEnemy(_enemiesPrefab[rndEnemy], GetRandomPosition(), _enemiesParent);
@@ -44,6 +47,8 @@ public class EnemiesSpawnerSystem : MonoBehaviour
             var rndPosZ = Random.Range(-3.1f, -3.9f);
 
             enemy.transform.position = new Vector3(enemy.transform.position.x, enemy.transform.position.y, rndPosZ);
+
+            _enemiesSpawnCount++;
         }
     }
 

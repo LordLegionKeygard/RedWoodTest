@@ -5,4 +5,10 @@ public class PlayerHealth : BaseHealth
         base.TakeDamage(damage);
         CheckDeath();
     }
+
+    public override void Death()
+    {
+        CustomEvents.FireGameEnd(GameEndEnum.LoseGameTakeDamage);
+        base.Death();
+    }
 }

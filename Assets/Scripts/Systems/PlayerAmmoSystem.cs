@@ -25,6 +25,7 @@ public class PlayerAmmoSystem : MonoBehaviour
     {
         _currentBulletsAmount += amount;
         UpdateTextView();
+        if (!HaveBullet()) CustomEvents.FireGameEnd(GameEndEnum.LoseGameEndBullets);
     }
 
     private void UpdateTextView()

@@ -47,7 +47,8 @@ public class EnemyHealth : BaseHealth
 
     public override void Death()
     {
-        base.Death();
         Destroy(_healthSliderObject);
+        CustomEvents.FireEnemyDie();
+        base.Death();
     }
 }

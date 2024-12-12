@@ -3,16 +3,11 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private int _damage = 1;
-    private float _speed = 20f;
+    private float _speed = 25f;
     private float _lifetime = 2f;
     private float _timer;
     private Rigidbody2D _rigidBody;
-    private BulletPool pool;
-
-    public void Initialize(BulletPool pool)
-    {
-        this.pool = pool;
-    }
+    private BulletPool _pool;
 
     private void Awake()
     {
@@ -34,6 +29,11 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    public void SetPool(BulletPool pool)
+    {
+        _pool = pool;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth health))
@@ -45,14 +45,6 @@ public class Bullet : MonoBehaviour
 
     private void ReturnToPool()
     {
-        _rigidBody.velocity = Vector2.zero;
-        if (pool != null)
-        {
-            pool.ReturnBullet(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        _pool.ReturnBullet(gameObject);
     }
 }

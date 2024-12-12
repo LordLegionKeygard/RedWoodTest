@@ -21,7 +21,7 @@ public class IdleState : PlayerState
         {
             _stateChanger.ChangeState(_stateChanger.MoveState);
         }
-        if (Input.GetMouseButtonDown(0) && _playerAmmoSystem.HaveBullet())
+        if (Input.GetMouseButtonDown(0) && _playerAmmoSystem.HaveBullet()) // к сожалению это не обязательно так как при конце пуль игра заканчивается, но я оставлю
         {
             _stateChanger.ChangeState(_stateChanger.AttackState);
         }
