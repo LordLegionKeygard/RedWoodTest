@@ -2,20 +2,23 @@ using UnityEngine;
 
 public class ParallaxEffect : MonoBehaviour
 {
-    [SerializeField] private Transform _cameraTransform;
-    [SerializeField] private float _parallaxFactor;
-    private Vector3 previousCameraPosition;
-    
+    [SerializeField] private float _paralaxSpeed;
+    private Transform _cameraTransform;
+    private float _lastCameraX;
+
 
     private void Start()
     {
-        previousCameraPosition = _cameraTransform.position;
+        _cameraTransform = Camera.main.transform;
+        _lastCameraX = _cameraTransform.position.x;
     }
+
 
     private void Update()
     {
-        Vector3 cameraDelta = _cameraTransform.position - previousCameraPosition;
-        transform.position += new Vector3(cameraDelta.x * _parallaxFactor, cameraDelta.y * _parallaxFactor, 0);
-        previousCameraPosition = _cameraTransform.position;
+        float deltaX = _cameraTransform.position.x - _lastCameraX;
+        transform.position += Vector3.right * (deltaX * _paralaxSpeed);
+
+        _lastCameraX = _cameraTransform.position.x;
     }
 }
