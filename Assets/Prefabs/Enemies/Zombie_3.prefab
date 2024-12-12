@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 226418925780629220}
   - component: {fileID: 3460349007107323883}
   - component: {fileID: 2334822278482016372}
+  - component: {fileID: 851701827342032778}
   m_Layer: 3
   m_Name: Zombie_3
   m_TagString: Untagged
@@ -234,3 +235,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyInfo: {fileID: 11400000, guid: 74ff99e63e724cc42b841bb08583d4f5, type: 2}
+--- !u!114 &851701827342032778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8640291697591699064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41129d1e30b00f4293bfa5c87647613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dropItems:
+  - {fileID: 11400000, guid: 543760f28158df541876092eff609cd3, type: 2}

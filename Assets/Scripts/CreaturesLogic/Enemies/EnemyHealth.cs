@@ -9,10 +9,12 @@ public class EnemyHealth : BaseHealth
     private EnemyInformation _enemyInformation;
     private BaseSlider _healthSlider;
     private GameObject _healthSliderObject;
+    private EnemyDrop _enemyDrop;
 
     private void Awake()
     {
         _enemyInformation = GetComponent<EnemyInformation>();
+        _enemyDrop = GetComponent<EnemyDrop>();
     }
 
     public override void SetStartStats()
@@ -48,6 +50,7 @@ public class EnemyHealth : BaseHealth
     public override void Death()
     {
         Destroy(_healthSliderObject);
+        _enemyDrop.DropItem();
         CustomEvents.FireEnemyDie();
         base.Death();
     }
