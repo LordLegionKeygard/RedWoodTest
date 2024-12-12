@@ -2,23 +2,31 @@ using UnityEngine;
 
 public class PlayerStateChanger : MonoBehaviour
 {
-    public PlayerState CurrentState { get; private set; }
-
-    public PlayerState IdleState { get; private set; }
-    public PlayerState MoveState { get; private set; }
-    // public PlayerState AttackState { get; private set; }
-    // public PlayerState MoveAttackState { get; private set; }
+    [SerializeField] private Transform _firePoint;
+    [SerializeField] private float _fireRate = 0.1f;
+    [SerializeField] private BulletPool _bulletPool;
 
     private PlayerMovement _playerMovement;
     private PlayerAnimator _playerAnimator;
+    private IBulletFactory _bulletFactory;
+    private PlayerState _currentState;
+
+    public PlayerState IdleState { get; private set; }
+    public PlayerState MoveState { get; private set; }
+    public PlayerState AttackState { get; private set; }
+    // public PlayerState MoveAttackState { get; private set; }
 
     private void Awake()
     {
         _playerMovement = GetComponent<PlayerMovement>();
         _playerAnimator = GetComponent<PlayerAnimator>();
 
+        _bulletFactory = new BulletFactory(_bulletPool);
+
         IdleState = new IdleState(this, _playerMovement, _playerAnimator);
         MoveState = new MoveState(this, _playerMovement, _playerAnimator);
+        AttackState = new AttackState(this, _playerMovement, _playerAnimator, _firePoint, _fireRate, _bulletFactory);
+        // MoveAttackState = new MoveAttackState(this, _playerMovement, _playerAnimator, _firePoint, _bulletPrefab, _fireRate, _bulletFactory);
     }
 
     private void Start()
@@ -28,15 +36,14 @@ public class PlayerStateChanger : MonoBehaviour
 
     public void ChangeState(PlayerState newState)
     {
-        if (CurrentState != null) CurrentState.Exit();
-
-        CurrentState = newState;
-        CurrentState.Enter();
+        _currentState?.Exit();
+        _currentState = newState;
+        _currentState.Enter();
     }
 
     private void Update()
     {
-        CurrentState.HandleInput();
-        CurrentState.UpdateLogic();
+        _currentState.HandleInput();
+        _currentState.UpdateLogic();
     }
 }

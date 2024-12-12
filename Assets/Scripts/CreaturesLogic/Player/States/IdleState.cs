@@ -9,6 +9,7 @@ public class IdleState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("Enter - IdleState");
         _playerAnimator.SetBoolAnimation(AnimatorStrings.Attack, false);
     }
 
@@ -19,9 +20,9 @@ public class IdleState : PlayerState
         {
             _stateChanger.ChangeState(_stateChanger.MoveState);
         }
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     _stateChanger.ChangeState(_stateChanger.AttackState);
-        // }
+        if (Input.GetMouseButtonDown(0))
+        {
+            _stateChanger.ChangeState(_stateChanger.AttackState);
+        }
     }
 }

@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
     private void HandleMovementInput()
     {
         float horizontal = Input.GetAxisRaw(WorldGameInfo.HorizontalAxis);
-        float vertical = Input.GetAxisRaw(WorldGameInfo.VerticalAxis);
 
         CurrentDirection = new Vector2(horizontal, 0).normalized;
     }

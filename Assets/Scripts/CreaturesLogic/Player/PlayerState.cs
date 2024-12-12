@@ -14,6 +14,5 @@ public abstract class PlayerState
     public virtual void Enter() {}
     public virtual void HandleInput() {}
     public virtual void UpdateLogic() {}
-    public virtual void UpdatePhysics() {}
     public virtual void Exit() {}
 }

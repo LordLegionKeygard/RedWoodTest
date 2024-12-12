@@ -44,4 +44,10 @@ public class EnemyHealth : BaseHealth
         _healthSlider.SetValue(_currentHealth);
         CheckDeath();
     }
+
+    public override void Death()
+    {
+        base.Death();
+        Destroy(_healthSliderObject);
+    }
 }

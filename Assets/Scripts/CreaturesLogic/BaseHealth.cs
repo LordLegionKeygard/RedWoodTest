@@ -5,13 +5,13 @@ public class BaseHealth : MonoBehaviour
     protected int _currentHealth;
     public int MaxHealth;
     protected bool _isDeath;
-    
+
     private void Start()
     {
         SetStartStats();
     }
 
-    
+
     public virtual void SetStartStats()
     {
         _isDeath = false;
@@ -28,7 +28,7 @@ public class BaseHealth : MonoBehaviour
         if (_currentHealth <= 0) Death();
     }
 
-    private void Death()
+    public virtual void Death()
     {
         _isDeath = true;
         Destroy(gameObject);
