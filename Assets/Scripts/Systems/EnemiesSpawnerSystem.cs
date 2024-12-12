@@ -9,9 +9,11 @@ public class EnemiesSpawnerSystem : MonoBehaviour
     [SerializeField] private Transform _enemiesParent;
     [SerializeField] private int _enemiesSpawnCount;
     private Coroutine _coroutine;
+    private Transform _cameraTransform;
 
     private void Start()
     {
+        _cameraTransform = Camera.main.transform;
         _coroutine = StartCoroutine(nameof(SpawnCoroutine));
 
         CustomEvents.OnGameEnd += GameEndStopCoroutine;
@@ -57,7 +59,8 @@ public class EnemiesSpawnerSystem : MonoBehaviour
 
     private Vector2 GetRandomPosition()
     {
-        var rndPosX = Random.Range(0, 2) == 0 ? Random.Range(-20, -50) : Random.Range(20, 50);
+        var posX = _cameraTransform.position.x;
+        var rndPosX = Random.Range(0, 2) == 0 ? Random.Range(posX - 30, posX - 50) : Random.Range(posX + 30, posX + 50);
         return new Vector2(rndPosX, -12.62f);
     }
 
